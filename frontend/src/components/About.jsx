@@ -61,7 +61,7 @@ export default function About() {
                 />
                 <img
                   src="/img/myphotoo.png"
-                  alt="Portfolio image"
+                  alt="Portfolio img"
                   style={{
                     alignItems: "center",
                     justifyContent: "center",

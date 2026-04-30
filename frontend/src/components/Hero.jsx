@@ -287,7 +287,7 @@ export default function Hero() {
             >
               <img
                 src="/img/myphoto.png"
-                alt="Portfolio image"
+                alt="Portfolio img"
                 style={{
                   width: "300px",
                   height: "300px",
