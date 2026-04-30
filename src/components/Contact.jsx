@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
-const API_BASE = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+const API_BASE = process.env.REACT_APP_API_URL;
 
 export default function Contact() {
   const [form, setForm] = useState({
