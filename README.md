@@ -1,0 +1,2 @@
+# My Portfolio - MERN
+A full‑stack personal portfolio built with MongoDB, Express.js, React, and Node.js. It showcases my skills, projects, and contact form with a clean UI and secure backend integration. The portfolio features responsive design, dynamic content management, and seamless communication between frontend and backend, providing an interactive way to present my work and connect with visitors.
