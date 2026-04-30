@@ -7,12 +7,6 @@ dotenv.config();
 
 const app = express();
 
-const allowedOrigins = [
-  "http://localhost:3000", // dev frontend
-  "http://localhost:3714", // your current dev port
-  "https://my-portfolio-mern.vercel.app", // deployed frontend
-];
-
 // Middleware
 const clientOrigin = process.env.CLIENT_URL;
 // || /localhost/
@@ -20,20 +14,7 @@ const clientOrigin = process.env.CLIENT_URL;
 //   "CLIENT_URL:",
 //   process.env.CLIENT_URL || "not set — allowing localhost origins",
 // );
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    methods: ["GET", "POST"],
-    credentials: true,
-  }),
-);
-
+app.use(cors({ origin: clientOrigin }));
 app.use(express.json());
 
 // Routes
