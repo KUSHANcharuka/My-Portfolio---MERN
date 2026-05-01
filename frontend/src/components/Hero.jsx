@@ -5,7 +5,6 @@ const TYPED_STRINGS = ["Developer", "Designer", "Freelancer", "Problem Solver"];
 
 export default function Hero() {
   const typedRef = useRef(null);
-  const cursorRef = useRef(null);
 
   useEffect(() => {
     let stringIndex = 0;
