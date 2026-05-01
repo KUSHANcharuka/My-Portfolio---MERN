@@ -8,13 +8,25 @@ dotenv.config();
 const app = express();
 
 // Middleware
-const clientOrigin = process.env.CLIENT_URL;
-// || /localhost/
-// console.log(
-//   "CLIENT_URL:",
-//   process.env.CLIENT_URL || "not set — allowing localhost origins",
-// );
-app.use(cors({ origin: clientOrigin }));
+const clientOrigin = process.env.CLIENT_URL || "http://localhost:3714";
+// Allow CORS for localhost and deployed frontend
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests from localhost and no origin (like mobile apps)
+      if (
+        !origin ||
+        origin.includes("localhost") ||
+        origin.includes("127.0.0.1") ||
+        origin.includes("vercel.app")
+      ) {
+        callback(null, true);
+      } else {
+        callback(null, true); // Allow all for now, restrict as needed
+      }
+    },
+  }),
+);
 app.use(express.json());
 
 // Routes
@@ -26,6 +38,6 @@ mongoose
   .then(() => console.log(" MongoDB connected")) // || "mongodb://localhost:27017/portfolio"
   .catch((err) => console.error(" MongoDB error:", err));
 
-const PORT = process.env.PORT;
-// || 5000
-app.listen(PORT, () => console.log(` Server running on port ${PORT}`));
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
