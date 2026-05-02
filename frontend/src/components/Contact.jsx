@@ -2,7 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
-const API_BASE = process.env.REACT_APP_API_URL;
+const API_BASE = (
+  process.env.REACT_APP_API_URL ||
+  "https://my-portfolio-mern-back.vercel.app/api"
+).replace(/\/+$/, "");
 
 export default function Contact() {
   const [form, setForm] = useState({
