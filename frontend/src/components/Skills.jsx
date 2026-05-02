@@ -103,14 +103,13 @@ export default function Skills() {
       <div className="container-custom">
         <div className="text-center mb-14">
           <p className="mb-4 text-xs font-medium uppercase tracking-[2px] text-blue-500">
-            Capabilities
+            What I Know
           </p>
           <h2 className="section-title">
-            Modern <span className="text-blue-500">Skill Set</span>
+            My Technical <span className="text-blue-500">Skills</span>
           </h2>
           <p className="mb-0 section-subtitle">
-            A practical mix of product design, frontend development, and backend
-            engineering
+            Technologies I work with day-to-day
           </p>
         </div>
 
