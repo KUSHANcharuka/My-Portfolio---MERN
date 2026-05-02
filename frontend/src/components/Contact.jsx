@@ -2,10 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
-const API_BASE = (
-  process.env.REACT_APP_API_URL ||
-  "https://my-portfolio-mern-back.vercel.app/api"
-).replace(/\/+$/, "");
+const API_BASE = process.env.REACT_APP_API_URL;
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -15,7 +12,7 @@ export default function Contact() {
     mobile: "",
     message: "",
   });
-  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [status, setStatus] = useState("idle"); // idle for loading | success | error
   const [error, setError] = useState("");
 
   const handleChange = (e) =>
@@ -52,23 +49,23 @@ export default function Contact() {
     "w-full rounded-[10px] border border-blue-500/20 bg-slate-900/70 px-4 py-3 text-sm text-slate-50 outline-none transition focus:border-blue-500";
 
   return (
-    <section id="contact" className="bg-slate-900/30 py-24">
+    <section id="contact" className="py-24 bg-slate-900/30">
       <div className="container-custom">
-        <div className="mb-14 text-center">
+        <div className="text-center mb-14">
           <p className="mb-4 text-xs font-medium uppercase tracking-[2px] text-blue-500">
             Get In Touch
           </p>
           <h2 className="section-title">
             Let's <span className="text-blue-500">Connect</span>
           </h2>
-          <p className="section-subtitle mb-0">
+          <p className="mb-0 section-subtitle">
             Have a project in mind? Let's talk.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
+        <div className="grid items-start grid-cols-1 gap-12 lg:grid-cols-2">
           <div>
-            <h3 className="mb-4 font-display text-3xl">
+            <h3 className="mb-4 text-3xl font-display">
               Ready to collaborate?
             </h3>
             <p className="mb-8 leading-loose text-slate-400">
@@ -85,6 +82,14 @@ export default function Contact() {
                     style={{ width: 64, height: 40 }}
                   />
                 ),
+                secondIcon: (
+                  <DotLottieReact
+                    src="https://lottie.host/fd51aacd-05af-4988-843d-b024e1720a56/ODJIfKB3P7.lottie"
+                    loop
+                    autoplay
+                    style={{ width: 64, height: 40 }}
+                  />
+                ),
                 label: "LinkedIn",
                 href: "https://www.linkedin.com/in/kushan-charuka-a99b5929b/",
               },
@@ -94,7 +99,15 @@ export default function Contact() {
                     src="https://lottie.host/dae891a6-d3e3-4256-8f3b-869ddaf475b2/hPuqdRiHd3.lottie"
                     loop
                     autoplay
-                    style={{ width: 64, height: 32 }}
+                    style={{ width: 64, height: 40 }}
+                  />
+                ),
+                secondIcon: (
+                  <DotLottieReact
+                    src="https://lottie.host/fd51aacd-05af-4988-843d-b024e1720a56/ODJIfKB3P7.lottie"
+                    loop
+                    autoplay
+                    style={{ width: 64, height: 40 }}
                   />
                 ),
                 label: "GitHub",
@@ -106,16 +119,18 @@ export default function Contact() {
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
-                className="mb-4 flex items-center gap-4 rounded-xl border border-blue-500/20 bg-slate-900/70 p-4 text-slate-400 no-underline transition hover:border-blue-500 hover:text-slate-50"
+                className="flex items-center gap-4 p-4 mb-4 no-underline transition border rounded-xl border-blue-500/20 bg-slate-900/70 text-slate-400 hover:border-blue-500 hover:text-slate-50"
               >
                 <span className="text-xl">{item.icon}</span>
                 <span className="text-sm font-medium">{item.label}</span>
-                <span className="ml-auto text-blue-500">→</span>
+                {item.secondIcon && (
+                  <span className="text-xl">{item.secondIcon}</span>
+                )}
               </a>
             ))}
           </div>
 
-          <div className="card p-8">
+          <div className="p-8 card">
             {status === "success" ? (
               <div className="py-8 text-center">
                 <div className="mb-4 text-5xl">
@@ -138,7 +153,7 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
-                <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-4 mb-4 sm:grid-cols-2">
                   {["firstName", "lastName"].map((field) => (
                     <input
                       key={field}
@@ -183,10 +198,10 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="btn btn-primary mt-1 min-h-12 w-full"
+                  className="w-full mt-1 btn btn-primary min-h-12"
                   disabled={status === "loading"}
                 >
-                  {status === "loading" ? "Sending..." : "Send Message →"}
+                  {status === "loading" ? "Sending..." : "Send Message"}
                 </button>
               </form>
             )}
