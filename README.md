@@ -1,6 +1,7 @@
 # My Portfolio - MERN
 
 Name: Personal Portfolio (MERN)
+
 Summary: A simple, responsive personal portfolio built with a React frontend and an Express/MongoDB backend. The frontend shows a hero, about, projects, skills, and contact sections; the backend provides a contact API that stores submissions in MongoDB.
 Tech Stack
 
