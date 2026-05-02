@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
+import { useEffect, useState } from "react";
+import { Link } from "react-scroll";
 
 const navLinks = [
-  { label: 'Home', to: 'home' },
-  { label: 'About', to: 'about' },
-  { label: 'Skills', to: 'skills' },
-  { label: 'Projects', to: 'projects' },
-  { label: 'Contact', to: 'contact' },
+  { label: "Home", to: "home" },
+  { label: "About", to: "about" },
+  { label: "Skills", to: "skills" },
+  { label: "Projects", to: "projects" },
+  { label: "Contact", to: "contact" },
 ];
 
 export default function Navbar() {
@@ -15,71 +15,80 @@ export default function Navbar() {
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handler);
-    return () => window.removeEventListener('scroll', handler);
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
   }, []);
 
   return (
-    <header style={{
-      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-      background: scrolled ? 'rgba(10,15,30,0.95)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(16px)' : 'none',
-      borderBottom: scrolled ? '1px solid rgba(59,130,246,0.15)' : 'none',
-      transition: 'all .4s',
-    }}>
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.2rem 2rem' }}>
-        <a href="#home" style={{ fontFamily: "'DM Serif Display', serif", fontSize: '1.4rem', color: '#3b82f6', letterSpacing: '-0.5px' }}>
+    <header
+      className={`fixed inset-x-0 top-0 z-[1000] transition-all duration-300 ${
+        scrolled
+          ? "border-b border-blue-500/20 bg-slate-950/95 backdrop-blur-xl"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="container-custom flex items-center justify-between py-5">
+        <a
+          href="#home"
+          className="font-display text-2xl tracking-tight text-blue-500"
+        >
           K.Charuka
         </a>
 
-        {/* Desktop nav */}
-        <nav style={{ display: 'flex', gap: '2.2rem' }} className="desktop-nav">
-          {navLinks.map(link => (
-            <Link key={link.to} to={link.to} smooth spy duration={600} offset={-80}
-              style={{ fontSize: '.9rem', color: '#94a3b8', cursor: 'pointer', transition: 'color .2s' }}
-              activeStyle={{ color: '#3b82f6' }}
-              onMouseEnter={e => e.target.style.color='#f8fafc'}
-              onMouseLeave={e => e.target.style.color='#94a3b8'}
+        <nav className="hidden items-center gap-9 md:flex">
+          {navLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              smooth
+              spy
+              duration={600}
+              offset={-80}
+              className="cursor-pointer text-sm text-slate-400 transition hover:text-slate-100"
+              activeClass="text-blue-500"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* Hire me button */}
-        <Link to="contact" smooth duration={600} offset={-80}
-          className="btn btn-primary" style={{ fontSize: '.85rem', padding: '.55rem 1.4rem' }}>
+        <Link
+          to="contact"
+          smooth
+          duration={600}
+          offset={-80}
+          className="btn btn-primary hidden px-6 py-2 text-xs md:inline-flex"
+        >
           Hire Me
         </Link>
 
-        {/* Mobile hamburger */}
-        <button onClick={() => setMenuOpen(!menuOpen)}
-          style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', color: '#f8fafc', fontSize: '1.4rem' }}
-          className="hamburger">
-          {menuOpen ? '✕' : '☰'}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="text-2xl text-slate-100 md:hidden"
+          aria-label="Toggle navigation"
+        >
+          {menuOpen ? "✕" : "☰"}
         </button>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
-        <div style={{ background: 'rgba(10,15,30,0.98)', padding: '1.5rem 2rem', borderTop: '1px solid rgba(59,130,246,0.15)' }}>
-          {navLinks.map(link => (
-            <Link key={link.to} to={link.to} smooth spy duration={600} offset={-80}
+        <div className="border-t border-blue-500/20 bg-slate-950/95 px-8 py-6 md:hidden">
+          {navLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              smooth
+              spy
+              duration={600}
+              offset={-80}
               onClick={() => setMenuOpen(false)}
-              style={{ display: 'block', padding: '.75rem 0', color: '#94a3b8', cursor: 'pointer', borderBottom: '1px solid rgba(59,130,246,0.1)' }}>
+              className="block border-b border-blue-500/10 py-3 text-slate-400"
+            >
               {link.label}
             </Link>
           ))}
         </div>
       )}
-
-      <style>{`
-        @media (max-width: 768px) {
-          .desktop-nav { display: none !important; }
-          .hamburger { display: block !important; }
-          .btn-primary { display: none !important; }
-        }
-      `}</style>
     </header>
   );
 }

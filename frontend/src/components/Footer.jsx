@@ -1,42 +1,18 @@
 export default function Footer() {
   return (
-    <footer
-      style={{
-        borderTop: "1px solid rgba(59,130,246,0.1)",
-        padding: "2.5rem 0",
-      }}
-    >
-      <div
-        className="container"
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: "1rem",
-        }}
-      >
+    <footer className="border-t border-blue-500/10 py-10">
+      <div className="container-custom flex flex-wrap items-center justify-between gap-4">
         <div>
-          <p
-            style={{
-              fontFamily: "'DM Serif Display', serif",
-              fontSize: "1.2rem",
-              color: "#3b82f6",
-            }}
-          >
-            K.Charuka
-          </p>
-          <p
-            style={{ color: "#475569", fontSize: ".8rem", marginTop: ".25rem" }}
-          >
+          <p className="font-display text-xl text-blue-500">K.Charuka</p>
+          <p className="mt-1 text-xs text-slate-600">
             BSc (Hons) Computer Science
           </p>
         </div>
-        <p style={{ color: "#475569", fontSize: ".82rem" }}>
+        <p className="text-xs text-slate-600">
           © {new Date().getFullYear()} Kushan Charuka. Built with{" "}
-          <span style={{ color: "#3b82f6" }}>React</span> +{" "}
-          <span style={{ color: "#22c55e" }}>Node.js</span> +{" "}
-          <span style={{ color: "#4ade80" }}>MongoDB</span>
+          <span className="text-blue-500">React</span> +{" "}
+          <span className="text-green-500">Node.js</span> +{" "}
+          <span className="text-green-400">MongoDB</span>
         </p>
       </div>
     </footer>

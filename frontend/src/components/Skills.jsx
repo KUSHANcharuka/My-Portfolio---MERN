@@ -98,45 +98,19 @@ const techBadges = [
 
 function SkillBar({ skill, animate }) {
   return (
-    <div style={{ marginBottom: "1.4rem" }}>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          marginBottom: ".5rem",
-        }}
-      >
-        <span
-          style={{
-            fontSize: ".9rem",
-            fontWeight: 500,
-            display: "flex",
-            alignItems: "center",
-            gap: "0.5rem",
-          }}
-        >
+    <div className="mb-6 last:mb-0">
+      <div className="mb-2 flex items-center justify-between">
+        <span className="flex items-center gap-2 text-sm font-medium">
           {skill.icon} {skill.name}
         </span>
-        <span style={{ color: "#94a3b8", fontSize: ".85rem" }}>
-          {skill.percent}%
-        </span>
+        <span className="text-sm text-slate-400">{skill.percent}%</span>
       </div>
-      <div
-        style={{
-          height: 8,
-          background: "rgba(255,255,255,0.05)",
-          borderRadius: 50,
-          overflow: "hidden",
-          border: "1px solid rgba(255,255,255,0.05)",
-        }}
-      >
+      <div className="h-2 overflow-hidden rounded-full border border-white/10 bg-white/5">
         <div
+          className="h-full rounded-full transition-[width] duration-[1200ms]"
           style={{
-            height: "100%",
-            borderRadius: 50,
             background: `linear-gradient(90deg, ${skill.color}, ${skill.color}88)`,
             width: animate ? `${skill.percent}%` : "0%",
-            transition: "width 1.2s cubic-bezier(.4,0,.2,1)",
             boxShadow: `0 0 8px ${skill.color}66`,
           }}
         />
@@ -163,100 +137,42 @@ export default function Skills() {
   const half = Math.ceil(skills.length / 2);
 
   return (
-    <section
-      id="skills"
-      style={{ padding: "6rem 0", background: "rgba(17,24,39,0.3)" }}
-      ref={ref}
-    >
-      <div className="container">
-        <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-          <p
-            style={{
-              color: "#3b82f6",
-              fontSize: ".85rem",
-              fontWeight: 500,
-              textTransform: "uppercase",
-              letterSpacing: "2px",
-              marginBottom: "1rem",
-            }}
-          >
+    <section id="skills" className="bg-slate-900/30 py-24" ref={ref}>
+      <div className="container-custom">
+        <div className="mb-14 text-center">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[2px] text-blue-500">
             What I Know
           </p>
           <h2 className="section-title">
-            My Technical <span>Skills</span>
+            My Technical <span className="text-blue-500">Skills</span>
           </h2>
-          <p className="section-subtitle" style={{ marginBottom: 0 }}>
+          <p className="section-subtitle mb-0">
             Technologies I work with day-to-day
           </p>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "2rem",
-            marginBottom: "3rem",
-          }}
-        >
-          <div className="card" style={{ padding: "2rem" }}>
+        <div className="mb-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="card p-8">
             {skills.slice(0, half).map((s) => (
               <SkillBar key={s.name} skill={s} animate={animate} />
             ))}
           </div>
-          <div className="card" style={{ padding: "2rem" }}>
+          <div className="card p-8">
             {skills.slice(half).map((s) => (
               <SkillBar key={s.name} skill={s} animate={animate} />
             ))}
           </div>
         </div>
 
-        {/* Tech badges */}
-        <div style={{ textAlign: "center" }}>
-          <p
-            style={{
-              color: "#64748b",
-              fontSize: ".85rem",
-              marginBottom: "1.5rem",
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-            }}
-          >
+        <div className="text-center">
+          <p className="mb-6 text-xs uppercase tracking-[1px] text-slate-500">
             Also familiar with
           </p>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              gap: ".75rem",
-            }}
-          >
+          <div className="flex flex-wrap justify-center gap-3">
             {techBadges.map((t) => (
               <span
                 key={t.name}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  padding: ".4rem 1.1rem",
-                  background: "rgba(59,130,246,0.08)",
-                  border: "1px solid rgba(59,130,246,0.2)",
-                  borderRadius: 50,
-                  fontSize: ".82rem",
-                  color: "#94a3b8",
-                  transition: "all .3s",
-                  cursor: "default",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "#3b82f6";
-                  e.currentTarget.style.color = "#3b82f6";
-                  e.currentTarget.style.background = "rgba(59,130,246,0.15)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(59,130,246,0.2)";
-                  e.currentTarget.style.color = "#94a3b8";
-                  e.currentTarget.style.background = "rgba(59,130,246,0.08)";
-                }}
+                className="flex cursor-default items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs text-slate-400 transition hover:border-blue-500 hover:bg-blue-500/15 hover:text-blue-500"
               >
                 {t.icon} {t.name}
               </span>

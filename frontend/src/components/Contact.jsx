@@ -48,78 +48,32 @@ export default function Contact() {
     }
   };
 
-  const inputStyle = {
-    width: "100%",
-    padding: ".85rem 1.1rem",
-    background: "rgba(17,24,39,0.7)",
-    border: "1px solid rgba(59,130,246,0.2)",
-    borderRadius: 10,
-    color: "#f8fafc",
-    fontSize: ".9rem",
-    fontFamily: "inherit",
-    outline: "none",
-    transition: "border-color .2s",
-  };
-
-  const inputFocus = (e) => (e.target.style.borderColor = "#3b82f6");
-  const inputBlur = (e) =>
-    (e.target.style.borderColor = "rgba(59,130,246,0.2)");
+  const inputClass =
+    "w-full rounded-[10px] border border-blue-500/20 bg-slate-900/70 px-4 py-3 text-sm text-slate-50 outline-none transition focus:border-blue-500";
 
   return (
-    <section
-      id="contact"
-      style={{ padding: "6rem 0", background: "rgba(17,24,39,0.3)" }}
-    >
-      <div className="container">
-        <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-          <p
-            style={{
-              color: "#3b82f6",
-              fontSize: ".85rem",
-              fontWeight: 500,
-              textTransform: "uppercase",
-              letterSpacing: "2px",
-              marginBottom: "1rem",
-            }}
-          >
+    <section id="contact" className="bg-slate-900/30 py-24">
+      <div className="container-custom">
+        <div className="mb-14 text-center">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[2px] text-blue-500">
             Get In Touch
           </p>
           <h2 className="section-title">
-            Let's <span>Connect</span>
+            Let's <span className="text-blue-500">Connect</span>
           </h2>
-          <p className="section-subtitle" style={{ marginBottom: 0 }}>
+          <p className="section-subtitle mb-0">
             Have a project in mind? Let's talk.
           </p>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "3rem",
-            alignItems: "start",
-          }}
-        >
-          {/* Info */}
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
           <div>
-            <h3
-              style={{
-                fontFamily: "'DM Serif Display', serif",
-                fontSize: "1.5rem",
-                marginBottom: "1rem",
-              }}
-            >
+            <h3 className="mb-4 font-display text-3xl">
               Ready to collaborate?
             </h3>
-            <p
-              style={{
-                color: "#94a3b8",
-                lineHeight: 1.9,
-                marginBottom: "2rem",
-              }}
-            >
+            <p className="mb-8 leading-loose text-slate-400">
               Whether you have a project idea, want to discuss opportunities, or
-              just want to say hello, My inbox is always open.
+              just want to say hello, my inbox is always open.
             </p>
             {[
               {
@@ -152,50 +106,27 @@ export default function Contact() {
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "1rem",
-                  padding: "1rem",
-                  marginBottom: "1rem",
-                  background: "rgba(17,24,39,0.7)",
-                  border: "1px solid rgba(59,130,246,0.15)",
-                  borderRadius: 12,
-                  color: "#94a3b8",
-                  transition: "all .3s",
-                  textDecoration: "none",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "#3b82f6";
-                  e.currentTarget.style.color = "#f8fafc";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(59,130,246,0.15)";
-                  e.currentTarget.style.color = "#94a3b8";
-                }}
+                className="mb-4 flex items-center gap-4 rounded-xl border border-blue-500/20 bg-slate-900/70 p-4 text-slate-400 no-underline transition hover:border-blue-500 hover:text-slate-50"
               >
-                <span style={{ fontSize: "1.3rem" }}>{item.icon}</span>
-                <span style={{ fontSize: ".9rem", fontWeight: 500 }}>
-                  {item.label}
-                </span>
-                <span style={{ marginLeft: "auto", color: "#3b82f6" }}>→</span>
+                <span className="text-xl">{item.icon}</span>
+                <span className="text-sm font-medium">{item.label}</span>
+                <span className="ml-auto text-blue-500">→</span>
               </a>
             ))}
           </div>
 
-          {/* Form */}
-          <div className="card" style={{ padding: "2rem" }}>
+          <div className="card p-8">
             {status === "success" ? (
-              <div style={{ textAlign: "center", padding: "2rem 0" }}>
-                <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>
+              <div className="py-8 text-center">
+                <div className="mb-4 text-5xl">
                   <DotLottieReact
                     src="https://lottie.host/8aa22207-da65-4688-9176-7466f86e06fa/7XuQrnQ20o.lottie"
                     loop
                     autoplay
                   />
                 </div>
-                <h3 style={{ marginBottom: ".5rem" }}>Message Sent!</h3>
-                <p style={{ color: "#94a3b8", marginBottom: "1.5rem" }}>
+                <h3 className="mb-2 text-xl">Message Sent!</h3>
+                <p className="mb-6 text-slate-400">
                   I'll get back to you soon.
                 </p>
                 <button
@@ -207,15 +138,7 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
-                <div
-                  className="contact-name-grid"
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: "1rem",
-                    marginBottom: "1rem",
-                  }}
-                >
+                <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {["firstName", "lastName"].map((field) => (
                     <input
                       key={field}
@@ -226,9 +149,7 @@ export default function Contact() {
                       }
                       required
                       onChange={handleChange}
-                      onFocus={inputFocus}
-                      onBlur={inputBlur}
-                      style={inputStyle}
+                      className={inputClass}
                     />
                   ))}
                 </div>
@@ -239,18 +160,14 @@ export default function Contact() {
                   placeholder="Email Address"
                   required
                   onChange={handleChange}
-                  onFocus={inputFocus}
-                  onBlur={inputBlur}
-                  style={{ ...inputStyle, marginBottom: "1rem" }}
+                  className={`${inputClass} mb-4`}
                 />
                 <input
                   name="mobile"
                   value={form.mobile}
                   placeholder="Mobile Number"
                   onChange={handleChange}
-                  onFocus={inputFocus}
-                  onBlur={inputBlur}
-                  style={{ ...inputStyle, marginBottom: "1rem" }}
+                  className={`${inputClass} mb-4`}
                 />
                 <textarea
                   name="message"
@@ -259,36 +176,14 @@ export default function Contact() {
                   required
                   rows={5}
                   onChange={handleChange}
-                  onFocus={inputFocus}
-                  onBlur={inputBlur}
-                  style={{
-                    ...inputStyle,
-                    resize: "vertical",
-                    marginBottom: "1.5rem",
-                  }}
+                  className={`${inputClass} mb-6 resize-y`}
                 />
 
-                {error && (
-                  <p
-                    style={{
-                      color: "#ef4444",
-                      fontSize: ".85rem",
-                      marginBottom: "1rem",
-                    }}
-                  >
-                    {error}
-                  </p>
-                )}
+                {error && <p className="mb-4 text-sm text-red-500">{error}</p>}
 
                 <button
                   type="submit"
-                  className="btn btn-primary"
-                  style={{
-                    width: "100%",
-                    justifyContent: "center",
-                    minHeight: "48px",
-                    marginTop: "0.25rem",
-                  }}
+                  className="btn btn-primary mt-1 min-h-12 w-full"
                   disabled={status === "loading"}
                 >
                   {status === "loading" ? "Sending..." : "Send Message →"}

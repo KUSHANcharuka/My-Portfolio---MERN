@@ -43,126 +43,59 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" style={{ padding: "6rem 0" }}>
-      <div className="container">
-        <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-          <p
-            style={{
-              color: "#3b82f6",
-              fontSize: ".85rem",
-              fontWeight: 500,
-              textTransform: "uppercase",
-              letterSpacing: "2px",
-              marginBottom: "1rem",
-            }}
-          >
+    <section id="projects" className="py-24">
+      <div className="container-custom">
+        <div className="mb-14 text-center">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[2px] text-blue-500">
             Portfolio
           </p>
           <h2 className="section-title">
-            My Recent <span>Projects</span>
+            My Recent <span className="text-blue-500">Projects</span>
           </h2>
-          <p className="section-subtitle" style={{ marginBottom: 0 }}>
+          <p className="section-subtitle mb-0">
             A selection of things I've built
           </p>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-            gap: "1.5rem",
-          }}
-        >
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {projects.map((p, i) => (
             <a
               key={i}
               href={p.link}
               target="_blank"
               rel="noreferrer"
-              style={{
-                display: "block",
-                textDecoration: "none",
-                color: "inherit",
-              }}
+              className="block text-inherit no-underline"
             >
-              <div
-                className="card"
-                style={{
-                  padding: "1.75rem",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                {/* Header */}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "1rem",
-                    marginBottom: "1.25rem",
-                  }}
-                >
+              <div className="card flex h-full flex-col p-7">
+                <div className="mb-5 flex items-center gap-4">
                   <div
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-2xl"
                     style={{
-                      width: 50,
-                      height: 50,
-                      borderRadius: 14,
                       background: `${p.color}18`,
                       border: `1px solid ${p.color}33`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "1.5rem",
-                      flexShrink: 0,
                     }}
                   >
                     {p.emoji}
                   </div>
                   <div>
-                    <h3
-                      style={{
-                        fontSize: "1rem",
-                        fontWeight: 600,
-                        lineHeight: 1.3,
-                      }}
-                    >
+                    <h3 className="text-base font-semibold leading-snug">
                       {p.title}
                     </h3>
                   </div>
                 </div>
 
-                {/* Description */}
-                <p
-                  style={{
-                    color: "#94a3b8",
-                    fontSize: ".88rem",
-                    lineHeight: 1.8,
-                    flex: 1,
-                    marginBottom: "1.25rem",
-                  }}
-                >
+                <p className="mb-5 flex-1 text-sm leading-loose text-slate-400">
                   {p.desc}
                 </p>
 
-                {/* Tags */}
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: ".5rem",
-                    marginBottom: "1.25rem",
-                  }}
-                >
+                <div className="mb-5 flex flex-wrap gap-2">
                   {p.tags.map((t) => (
                     <span
                       key={t}
+                      className="rounded-full px-3 py-1 text-xs"
                       style={{
-                        padding: ".2rem .75rem",
                         background: `${p.color}12`,
                         border: `1px solid ${p.color}28`,
-                        borderRadius: 50,
-                        fontSize: ".75rem",
                         color: p.color,
                       }}
                     >
@@ -171,16 +104,9 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Link */}
                 <div
-                  style={{
-                    color: p.color,
-                    fontSize: ".85rem",
-                    fontWeight: 500,
-                    display: "flex",
-                    alignItems: "center",
-                    gap: ".4rem",
-                  }}
+                  className="flex items-center gap-1 text-sm font-medium"
+                  style={{ color: p.color }}
                 >
                   View Project <span>→</span>
                 </div>

@@ -1,162 +1,59 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap");
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --navy: #0a0f1e;
-  --navy-mid: #111827;
-  --navy-light: #1a2744;
-  --blue: #2563eb;
-  --blue-glow: #3b82f6;
-  --cyan: #06b6d4;
-  --slate: #94a3b8;
-  --slate-light: #cbd5e1;
-  --white: #f8fafc;
-  --card-bg: rgba(17, 24, 39, 0.7);
-  --border: rgba(59, 130, 246, 0.15);
-  --font-display: "DM Serif Display", Georgia, serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
-  --radius: 16px;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-body);
-  background: var(--navy);
-  color: var(--white);
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--navy);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--blue);
-  border-radius: 3px;
-}
-
-.container {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.section-title {
-  font-family: "DM Serif Display", Georgia, serif;
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  margin-bottom: 1rem;
-}
-.section-title span {
-  color: #3b82f6;
-}
-.section-subtitle {
-  color: #94a3b8;
-  font-size: 1rem;
-  margin-bottom: 3.5rem;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 2rem;
-  border-radius: 50px;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s;
-  border: none;
-}
-.btn-primary {
-  background: #2563eb;
-  color: #fff;
-}
-.btn-primary:hover {
-  background: #3b82f6;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
-}
-.btn-outline {
-  background: transparent;
-  color: #3b82f6;
-  border: 1.5px solid #3b82f6;
-}
-.btn-outline:hover {
-  background: #2563eb;
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-.card {
-  background: rgba(17, 24, 39, 0.7);
-  border: 1px solid rgba(59, 130, 246, 0.15);
-  border-radius: 16px;
-  backdrop-filter: blur(10px);
-  transition:
-    border-color 0.3s,
-    transform 0.3s;
-}
-.card:hover {
-  border-color: rgba(59, 130, 246, 0.5);
-  transform: translateY(-4px);
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  body {
+    @apply overflow-x-hidden bg-slate-950 font-body text-slate-50;
+    line-height: 1.7;
   }
-}
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
+
+  ::-webkit-scrollbar {
+    width: 6px;
   }
-  50% {
-    transform: translateY(-12px);
+
+  ::-webkit-scrollbar-track {
+    background: #0a0f1e;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 3px;
   }
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 0 1.25rem;
+@layer components {
+  .container-custom {
+    @apply mx-auto w-full max-w-[1100px] px-5 md:px-8;
   }
 
-  .contact-name-grid {
-    grid-template-columns: 1fr !important;
+  .section-title {
+    @apply mb-4 font-display text-[clamp(2rem,4vw,2.8rem)];
   }
 
-  .contact-name-grid input {
-    width: 100%;
+  .section-subtitle {
+    @apply mb-14 text-base text-slate-400;
   }
 
   .btn {
-    display: flex;
-    width: 100%;
-    justify-content: center;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-3 text-sm font-medium transition duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-[0_8px_24px_rgba(37,99,235,0.4)];
+  }
+
+  .btn-outline {
+    @apply border border-blue-500 bg-transparent text-blue-500 hover:-translate-y-0.5 hover:bg-blue-600 hover:text-white;
+  }
+
+  .card {
+    @apply rounded-2xl border border-blue-500/20 bg-slate-900/70 backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:border-blue-400/50;
   }
 }
