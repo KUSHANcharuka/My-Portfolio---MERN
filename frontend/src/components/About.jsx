@@ -61,7 +61,7 @@ export default function About() {
                 />
                 <img
                   src="/img/myphotoo.png"
-                  alt="Portfolio img"
+                  alt="Portrait of Kushan Charuka"
                   style={{
                     alignItems: "center",
                     justifyContent: "center",

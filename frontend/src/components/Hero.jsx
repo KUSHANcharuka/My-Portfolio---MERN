@@ -286,7 +286,7 @@ export default function Hero() {
             >
               <img
                 src="/img/myphoto.png"
-                alt="Portfolio img"
+                alt="Portrait of Kushan Charuka"
                 style={{
                   width: "300px",
                   height: "300px",
