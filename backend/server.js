@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 
 // Middleware
-const clientOrigin = process.env.CLIENT_URL || "http://localhost:3714";
+const clientOrigin = process.env.CLIENT_URL;
 
 // || "http://localhost:3714"
 
