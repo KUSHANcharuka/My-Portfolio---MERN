@@ -18,7 +18,7 @@ app.use(
         !origin ||
         origin.includes("localhost") ||
         origin.includes("127.0.0.1") ||
-        origin.includes("vercel.app")
+        origin.includes("https://my-portfolio-mern-ebon.vercel.app")
       ) {
         callback(null, true);
       } else {
