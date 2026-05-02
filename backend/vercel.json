@@ -6,7 +6,7 @@
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "https://my-portfolio-mern-front.vercel.app"
+          "value": "http://localhost:3714"
         },
         {
           "key": "Access-Control-Allow-Methods",
